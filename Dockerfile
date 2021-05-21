@@ -6,6 +6,9 @@ ENV TERRAFORM_VERSION=${TERRAFORM_VERSION:-0.15.4}
 ARG GOOGLE_CLOUD_SDK_VERSION
 ENV GOOGLE_CLOUD_SDK_VERSION=${GOOGLE_CLOUD_SDK_VERSION:-341.0.0-0}
 
+ARG JQ_VERSION
+ENV JQ_VERSION=${JQ_VERSION:-1.6}
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -34,6 +37,9 @@ RUN apt-get update && \
 RUN curl -Lo terraform_${TERRAFORM_VERSION}_linux_amd64.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip -d /usr/local/bin terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+RUN curl -Lo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 && \
+    chmod 755 /usr/local/bin/jq
 
 ENTRYPOINT ["/usr/local/bin/terraform"]
 CMD ["-help"]
