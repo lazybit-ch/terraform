@@ -13,7 +13,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         apt-transport-https=2.0.5 \
-        ca-certificates=20201027ubuntu0.20.04.1 \
+        ca-certificates=20190110ubuntu1 \
         curl=7.68.0-1ubuntu2.2 \
         git=1:2.25.1-1ubuntu3 \
         gnupg=2.2.19-3ubuntu2 \
