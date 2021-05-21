@@ -16,7 +16,7 @@ RUN apt-get update && \
         ca-certificates=20190110ubuntu1 \
         curl=7.68.0-1ubuntu2.5 \
         git=1:2.25.1-1ubuntu3 \
-        gnupg=2.2.19-3ubuntu2 \
+        gnupg=2.2.19-3ubuntu2.1 \
         unzip=6.0-25ubuntu1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/
