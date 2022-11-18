@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ARG TERRAFORM_VERSION
-ENV TERRAFORM_VERSION=${TERRAFORM_VERSION:-0.15.4}
+ENV TERRAFORM_VERSION=${TERRAFORM_VERSION:-1.3.5}
 
 ARG GOOGLE_CLOUD_SDK_VERSION
-ENV GOOGLE_CLOUD_SDK_VERSION=${GOOGLE_CLOUD_SDK_VERSION:-341.0.0-0}
+ENV GOOGLE_CLOUD_SDK_VERSION=${GOOGLE_CLOUD_SDK_VERSION:-410.0.0-0}
 
 ARG JQ_VERSION
 ENV JQ_VERSION=${JQ_VERSION:-1.6}
@@ -15,12 +15,17 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        apt-transport-https=2.0.5 \
-        ca-certificates=20190110ubuntu1 \
-        curl=7.68.0-1ubuntu2.5 \
-        git=1:2.25.1-1ubuntu3 \
-        gnupg=2.2.19-3ubuntu2.1 \
-        unzip=6.0-25ubuntu1 && \
+        apt-transport-https=2.4.8 \
+        ca-certificates=20211016 \
+        curl=7.81.0-1ubuntu1.6 \
+        git=1:2.34.1-1ubuntu1.5 \
+        gnupg-utils=2.2.27-3ubuntu2.1 \
+        gnupg-l10n=2.2.27-3ubuntu2.1 \
+        gnupg1=1.4.23-1.1build1 \
+        gpg-agent=2.2.27-3ubuntu2.1 \
+        gpgconf=2.2.27-3ubuntu2.1 \
+        gpg=2.2.27-3ubuntu2.1 \
+        unzip=6.0-26ubuntu3.1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/
 
